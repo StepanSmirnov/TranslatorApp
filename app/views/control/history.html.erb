@@ -1,0 +1,11 @@
+<ul>
+  <%@records.each do |rec|%>
+    <li>
+      <%= rec.created_at.localtime %><br>
+      <%= rec.source %><br>
+      <%= rec.show %><br>
+      <%= rec.lang %>
+    </li>
+  <%end%>
+</ul>
+<%=link_to 'Назад',  action:'index'%>

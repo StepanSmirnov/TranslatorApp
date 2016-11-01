@@ -1,0 +1,17 @@
+<%= form_tag({controller: "control"}, method: "post", class: "nifty_form") do %>
+	<%= text_area_tag(:source, @ansver['source'], size: "30x10", placeholder: 'Исходный текст') %>
+	<%= text_area_tag(:show, @ansver['text'], readonly:true, size: "30x10", placeholder: 'Перевод')%>
+	<table>
+		<tr>
+		<td><%= text_area_tag(
+			:fromlang,
+			Main.langs[@ansver['lang'].split('-')[0]],
+			readonly:true,
+			size: "30x1" ) %></td>
+		<td><%= select_tag( :tolang, 
+			options_for_select(Main.langs.invert.sort.to_a, @ansver['tolang']) ) %></td>
+		<td><%= submit_tag("Перевести") %></td>
+		</tr>
+	</table>
+<% end %>
+<%=link_to 'История', action:'history'%>
