@@ -16,9 +16,18 @@ ActiveRecord::Schema.define(version: 20161101205051) do
     t.string   "source"
     t.text     "fromlang"
     t.text     "lang"
-    t.string   "show"
+    t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "crypted_password"
+    t.string "password_salt"
+    t.string "persistence_token"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

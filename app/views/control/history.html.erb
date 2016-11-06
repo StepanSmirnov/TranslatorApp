@@ -1,11 +1,4 @@
 <ul>
-  <%@records.each do |rec|%>
-    <li>
-      <%= rec.created_at.localtime %><br>
-      <%= rec.source %><br>
-      <%= rec.show %><br>
-      <%= rec.lang %>
-    </li>
-  <%end%>
+  <%= render partial: 'record', collection:@records%>   
 </ul>
 <%=link_to 'Назад',  action:'index'%>

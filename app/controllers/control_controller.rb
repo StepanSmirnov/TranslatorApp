@@ -1,6 +1,7 @@
 class ControlController < ApplicationController
   rescue_from YandexError, with: :onerror
   helper_method :init_ansver, :init_records, :default_ansver
+  before_action :is_logged
 	def index
     default_ansver   
 	end
@@ -29,6 +30,12 @@ private
   end
 
   def init_records
-    @records = Record.all    
+    @records = Record.all
+  end
+
+  def is_logged
+    @session = UserSession.find
+    @current_user = @session && @session.user
+    redirect_to sign_in_path unless  @current_user
   end
 end
