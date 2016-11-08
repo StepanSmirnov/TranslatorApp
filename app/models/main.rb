@@ -5,7 +5,7 @@ class Main
     def translate(args)
       args.update(tr.translate(args['source'], args['tolang']))
       args['text'] = args['text'][0]
-      Record.create(args.permit(:source, :fromlang, :lang, :text))
+      Article.find(params[:user_id]).create(args.permit(:source, :fromlang, :lang, :text))
       args
     end  
   end

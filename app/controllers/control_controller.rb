@@ -1,18 +1,18 @@
 class ControlController < ApplicationController
   rescue_from YandexError, with: :onerror
-  helper_method :init_ansver, :init_records, :default_ansver
+  helper_method :get_ansver, :get_records
   before_action :is_logged
 	def index
-    default_ansver   
+
 	end
 
   def translate
-    init_ansver
+    @ansver = Main.translate(params)
     render :index
   end
 
   def history
-    init_records  
+
   end
 
 private
@@ -21,16 +21,12 @@ private
     render text:ex.message
   end
 
-  def init_ansver
-    @ansver = Main.translate(params) 
+  def get_ansver
+    @ansver ||= {'lang' => '', 'tolang' => 'ru'}  
   end
 
-  def default_ansver
-    @ansver={'lang' => '', 'tolang' => 'ru'}  
-  end
-
-  def init_records
-    @records = Record.all
+  def get_records
+    @records ||= Record.all
   end
 
   def is_logged
