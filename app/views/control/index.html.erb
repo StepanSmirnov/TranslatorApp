@@ -1,3 +1,5 @@
+<%=render 'user'%>
+<%=link_to 'История', action:'history'%>
 <%= form_tag({controller: "control"}, method: "post", class: "nifty_form") do %>
 	<%= text_area_tag(:source, get_ansver['source'], size: "30x10", placeholder: 'Исходный текст') %>
 	<%= text_area_tag(:show, get_ansver['text'], readonly:true, size: "30x10", placeholder: 'Перевод')%>
@@ -14,4 +16,3 @@
 		</tr>
 	</table>
 <% end %>
-<%=link_to 'История', action:'history'%>

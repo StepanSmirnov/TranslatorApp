@@ -1,18 +1,1 @@
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2> Возникли проблемы при сохранении нового пользователя: </h2>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= Main.tr.translate(msg,'ru')['text'][0] %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<%=form_for @user do |f|%>
-  <%= f.text_field :name, {placeholder: 'Ваше имя'}%><br>
-  <%= f.text_field :email, {placeholder: 'Ваш email'} %><br>
-  <%= f.password_field :password, {placeholder: 'Ваш пароль'}%><br>
-  <%= f.password_field :password_confirmation, {placeholder: 'Подтвердите пароль'} %><br>
-  <%= f.submit "Зарегистрироваться", :disable_with => 'Регистрация...' %><br>
-  <%= link_to 'Назад', sign_in_path %>
-<% end -%>
+<%= render partial: 'form', locals: {user: @user}%>

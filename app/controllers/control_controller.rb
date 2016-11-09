@@ -26,12 +26,10 @@ private
   end
 
   def get_records
-    @records ||= Record.all
+    @records ||= current_user.records
   end
 
-  def is_logged
-    @session = UserSession.find
-    @current_user = @session && @session.user
-    redirect_to sign_in_path unless  @current_user
+  def is_logged   
+    redirect_to sign_in_path unless current_session
   end
 end

@@ -1,0 +1,8 @@
+<ul>
+  <li><%= current_user.name%></li>
+  <li><%= current_user.email %></li>
+</ul>
+<%= link_to 'Выйти', sign_out_path, method: :delete %>
+<%= link_to 'Редактировать', edit_user_path%>
+<%= link_to 'Удалить', user_path, method: :delete %>
+<%= link_to 'Назад', translate_path%>
