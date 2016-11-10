@@ -2,8 +2,7 @@
   <h1>Войдите в Ваш аккаунт</h1>
   <%= f.text_field :email, {placeholder: 'Ваш email'} %><br>
   <%= f.password_field :password, {placeholder: 'Ваш пароль'} %><br>
-  <!--<%=f.check_box :remember_me %>Запомнить меня<br>-->
+  <%=f.check_box :remember_me %>Запомнить меня<br>
   <%= f.submit "Войти", :disable_with => 'Вход...' %><br>
   <%= link_to "Вы еще не зарегистрированы?", new_user_path %><br>
 <% end %>
-
