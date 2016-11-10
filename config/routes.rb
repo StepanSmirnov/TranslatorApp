@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create, :destroy]
   delete '/sign_out' => 'user_sessions#destroy', as: :sign_out
   get '/sign_in' => 'user_sessions#new', as: :sign_in
-  root "user_sessions#new"
+  root "control#index"
 end

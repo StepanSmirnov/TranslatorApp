@@ -1,6 +1,8 @@
 class UserSessionsController < ApplicationController
+  helper_method :get_session
+
   def new
-    @session = UserSession.new
+    
   end
 
   def create
@@ -20,6 +22,9 @@ class UserSessionsController < ApplicationController
   end
 
 private
+  def get_session
+    @session ||= UserSession.new  
+  end
 
   def session_params
     params.require(:user_session).permit(:email, :password, :remember_me)

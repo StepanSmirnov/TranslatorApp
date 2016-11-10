@@ -1,4 +1,4 @@
-<%= form_for @session do |f|%>
+<%= form_for get_session do |f|%>
   <h1>Войдите в Ваш аккаунт</h1>
   <%= f.text_field :email, {placeholder: 'Ваш email'} %><br>
   <%= f.password_field :password, {placeholder: 'Ваш пароль'} %><br>

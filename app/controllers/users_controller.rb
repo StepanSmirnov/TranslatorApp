@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
+  helper_method :user
+
   def create
     @user = User.new(users_params)
     if @user.save(users_params)
       flash[:secces] = 'Вы успешно зарегистрированы'
-      redirect_to sign_in_path
+      redirect_to translate_path
     else
       render :new
     end
   end
 
   def new
-    @user = User.new
+    
   end
 
   def edit
@@ -32,6 +34,9 @@ class UsersController < ApplicationController
   end
 
 private
+  def user
+    @user ||= User.new  
+  end
 
   def users_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
