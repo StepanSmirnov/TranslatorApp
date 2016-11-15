@@ -20,4 +20,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  forms:
+    confirm: 'Confirm'
+    remember_me: 'Remember me'
+    title: 'Sign in to your account'
+    email: 'Your email'
+    password: 'Your password'
+    name: 'Your name'
+    pass_confirm: 'Confirm your password'
+    sign_up: 'You have not registered yet?'
+    sign_in: 'Sign in'
+    error: 'Having trouble saving user:'
+  tn:
+    source: 'Original text'
+    translated: 'Translated text'
+    translate: 'Translate'
+  nav:
+    history: 'History'
+    translator: 'Translator'
+    sign_out: 'Sign out'
+    back: 'Back'
+  flash:
+    welcome: 'Welcome back!'
+    seccess: 'You have successfully registered'
+    error: 'Email or password are wrong'
+  user:
+    edit: 'Edit'
+    delete: 'Delete'
+  err401: 'Access allowed only for registered users (401)'

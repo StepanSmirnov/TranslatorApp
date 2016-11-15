@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   resources :user_sessions, only: [:create, :destroy]
   delete '/sign_out' => 'user_sessions#destroy', as: :sign_out
-  get '/sign_in' => 'user_sessions#new', as: :sign_in
+  get '/:locale/sign_in' ,to: 'user_sessions#new', as: :sign_in
   root "control#index"
 end

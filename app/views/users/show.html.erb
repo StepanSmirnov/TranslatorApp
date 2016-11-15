@@ -2,7 +2,7 @@
   <li><%= current_user.name%></li>
   <li><%= current_user.email %></li>
 </ul>
-<%= link_to 'Выйти', sign_out_path, method: :delete %>
-<%= link_to 'Редактировать', edit_user_path%>
-<%= link_to 'Удалить', user_path, method: :delete %>
-<%= link_to 'Назад', translate_path%>
+<%= link_to t('nav.sign_out'), sign_out_path, method: :delete %>
+<%= link_to t('user.edit'), edit_user_path%>
+<%= link_to t('user.delete'), user_path, method: :delete %>
+<%= link_to t('nav.back'), translate_path%>

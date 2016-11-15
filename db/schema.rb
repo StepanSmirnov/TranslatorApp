@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107075729) do
+ActiveRecord::Schema.define(version: 20161115055751) do
 
   create_table "records", force: :cascade do |t|
     t.string   "source"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20161107075729) do
     t.string "crypted_password"
     t.string "password_salt"
     t.string "persistence_token"
+    t.string "locale"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

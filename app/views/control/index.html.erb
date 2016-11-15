@@ -1,18 +1,19 @@
 <%=render 'user'%>
-<%=link_to 'История', action:'history'%>
+<%=link_to t('nav.history'), action:'history'%>
 <%= form_tag({controller: "control"}, method: "post", class: "nifty_form") do %>
-	<%= text_area_tag(:source, get_ansver['source'], size: "30x10", placeholder: 'Исходный текст') %>
-	<%= text_area_tag(:show, get_ansver['text'], readonly:true, size: "30x10", placeholder: 'Перевод')%>
-	<table>
-		<tr>
-		<td><%= text_area_tag(
-			:fromlang,
-			Main.langs[get_ansver['lang'].split('-')[0]],
-			readonly:true,
-			size: "30x1" ) %></td>
-		<td><%= select_tag( :tolang, 
-			options_for_select(Main.langs.invert.sort.to_a, get_ansver['tolang']) ) %></td>
-		<td><%= submit_tag("Перевести") %></td>
-		</tr>
-	</table>
+  <%= text_area_tag(:source, get_answer['source'], size: "30x10", placeholder: t('tn.source')) %>
+  <%= text_area_tag(:show, get_answer['text'], readonly:true, size: "30x10", 
+    placeholder: t('tn.translated'))%>
+  <table>
+    <tr>
+    <td><%= text_area_tag(
+      :fromlang,
+      Main.langs[get_answer['lang'].split('-')[0]],
+      readonly:true,
+      size: "30x1" ) %></td>
+    <td><%= select_tag( :tolang, 
+      options_for_select(Main.langs.invert.sort.to_a, get_answer['tolang']) ) %></td>
+    <td><%= submit_tag t('tn.translate') %></td>
+    </tr>
+  </table>
 <% end %>

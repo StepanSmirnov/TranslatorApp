@@ -1,13 +1,13 @@
 class ControlController < ApplicationController
   rescue_from YandexError, with: :onerror
-  helper_method :get_ansver, :get_records
+  helper_method :get_answer, :get_records
   before_action :is_logged
 	def index
 
 	end
 
   def translate
-    @ansver = Main.translate(params)
+    @answer = Main.translate(params)
     render :index
   end
 
@@ -21,8 +21,8 @@ private
     render text:ex.message
   end
 
-  def get_ansver
-    @ansver ||= {'lang' => '', 'tolang' => 'ru'}  
+  def get_answer
+    @answer ||= {'lang' => '', 'tolang' => 'ru'}  
   end
 
   def get_records
@@ -30,6 +30,6 @@ private
   end
 
   def is_logged   
-    redirect_to sign_in_path unless current_session
+    redirect_to sign_in_path(locale: I18n.locale) unless current_session
   end
 end

@@ -1,8 +1,12 @@
-<%= form_for get_session do |f|%>
-  <h1>Войдите в Ваш аккаунт</h1>
-  <%= f.text_field :email, {placeholder: 'Ваш email'} %><br>
-  <%= f.password_field :password, {placeholder: 'Ваш пароль'} %><br>
-  <%=f.check_box :remember_me %>Запомнить меня<br>
-  <%= f.submit "Войти", :disable_with => 'Вход...' %><br>
-  <%= link_to "Вы еще не зарегистрированы?", new_user_path %><br>
+<%= form_for get_session, url: {action: "create", locale: I18n.locale} do |f|%>
+  <h1><%= t('forms.title')%></h1>
+  <%= f.text_field :email, {placeholder: t('forms.email')} %><br>
+  <%= f.password_field :password, {placeholder: t('forms.password')} %><br>
+  <%=f.check_box :remember_me %><%= t('forms.remember_me') %><br>
+  <%= f.submit t('forms.sign_in') %><br>
+  <%= link_to t('forms.sign_up'), new_user_path %><br>
+  <% for lang in (I18n.available_locales - [I18n.locale])%>
+  	<%= link_to lang, sign_in_path(locale: lang) %><br>		
+  <% end %>
+  
 <% end %>
