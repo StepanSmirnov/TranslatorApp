@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   helper_method :user
   def create
     user(users_params)
-    if @user.save
+    if user.save
       flash[:seccess] = t('flash.seccess')
       redirect_to translate_path
     else
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def show
     render text: t(:err401), status: 401 if User.find(params[:id])!=current_user
   rescue ActiveRecord::RecordNotFound
-    render file: '../../public/404.html', status: 404 
+    render text: t(:err404), status: 404 
   end
 
   def update
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
 private
   def user(args = nil)
-    @user ||= User.new(args)
+    user ||= User.new(args)
   end
 
   def users_params
