@@ -6,8 +6,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    get_session(session_params)
-    if @session.save
+    if user_session.save
       flash[:seccess] = t('flash.welcome')
       redirect_to translate_path
     else
@@ -22,8 +21,8 @@ class UserSessionsController < ApplicationController
   end
 
 private
-  def get_session(args = nil)
-    @session ||= UserSession.new(args)  
+  def user_session
+    @session ||= UserSession.new(session_params)  
   end
 
   def session_params

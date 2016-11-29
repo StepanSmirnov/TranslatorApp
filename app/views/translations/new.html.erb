@@ -1,0 +1,13 @@
+<%=render 'user'%>
+<%=link_to t('nav.history'), action:'index'%>
+<%= form_for translation, url: translate_path, method: 'post' do |f| %>
+  <%= f.text_area :source, { size: "30x10", placeholder: t('tn.source') } %>
+  <%= f.text_area :text, { readonly:true, size: "30x10", placeholder: t('tn.translated') }%>
+  <table>
+    <tr>
+    <td><%= f.text_field :fromlang, { readonly:true, size: "30x1" } %></td>
+    <td><%= f.collection_select( :lang, YandexAPI.langs.invert.sort, :last, :first) %></td>
+    <td><%= f.submit t('tn.translate') %></td>
+    </tr>
+  </table>
+<% end %>

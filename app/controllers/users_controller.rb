@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   helper_method :user
   def create
-    user(users_params)
     if user.save
       flash[:seccess] = t('flash.seccess')
       redirect_to translate_path
@@ -35,8 +34,8 @@ class UsersController < ApplicationController
   end
 
 private
-  def user(args = nil)
-    user ||= User.new(args)
+  def user
+    @user ||= User.new(users_params)
   end
 
   def users_params

@@ -1,6 +1,6 @@
 <%=render 'user'%>
 <%=link_to t('nav.translator'), translate_path%>
 <ul>
-  <%= render partial: 'record', collection:get_records%>   
+  <%= render partial: 'translation', collection: users_translations%>   
 </ul>
 <%=link_to t('nav.back'), translate_path%>

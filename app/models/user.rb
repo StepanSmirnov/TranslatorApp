@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
   acts_as_authentic
-  has_many :records, dependent: :destroy
+  has_many :translations, dependent: :destroy
 end
