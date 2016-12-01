@@ -1,0 +1,17 @@
+= form_for user_session, url: {action: "create", locale: I18n.locale} do |f|
+  h1
+    = t('forms.title')
+  div
+    = f.text_field :email, {placeholder: t('forms.email')}
+  div
+    = f.password_field :password, {placeholder: t('forms.password')}
+  div
+    = f.check_box :remember_me
+  div
+    = t('forms.remember_me')
+  div
+    = f.submit t('forms.sign_in')
+  div
+    = link_to t('forms.sign_up'), new_user_path(locale: I18n.locale)
+  - for lang in (I18n.available_locales - [I18n.locale])
+    = link_to lang, sign_in_path(locale: lang)

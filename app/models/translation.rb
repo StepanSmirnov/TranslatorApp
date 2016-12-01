@@ -1,13 +1,15 @@
 class Translation < ActiveRecord::Base
-  validates :source, presence: true, length: {minimum: 1}
-  before_save :add_translation
-private
+  validates :source, presence: true, length: { minimum: 1 }
+  after_save :add_translation
+
+  private
+
   def add_translation
-    attributes.merge!(
-      if existing = Translation.find_by(source: source, lang: lang)
+    update_columns(
+      if existing = Translation.where('source = ? and lang = ?', source, lang).where('text != ""').first
         existing.attributes.extract!('text', 'fromlang')
       else
-        translation = YandexAPI.translate(source,lang)
+        YandexAPI.translate(source, lang)
       end
     )
   end

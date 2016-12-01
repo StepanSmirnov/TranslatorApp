@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   post  "/translate" => "translations#create"
   get "/history" => "translations#index"
   get "/translation" => "translations#show"
-  resources :users, except: [:index]
+  resources :users, except: [:index, :new]
+  get '/:locale/users/new', to: 'users#new', as: :new_user
   resources :user_sessions, only: [:create, :destroy]
   # resources :translations, except: [:edit, :update, :destroy]
   delete '/sign_out' => 'user_sessions#destroy', as: :sign_out

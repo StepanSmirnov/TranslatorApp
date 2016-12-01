@@ -1,9 +1,7 @@
 class UserSessionsController < ApplicationController
   helper_method :user_session
 
-  def new
-   
-  end
+  def new; end
 
   def create
     if user_session.save
@@ -20,14 +18,13 @@ class UserSessionsController < ApplicationController
     redirect_to sign_in_path(locale: I18n.locale)
   end
 
-private
+  private
+
   def user_session
-    @session ||= UserSession.new(session_params)  
+    @session ||= UserSession.new(session_params)
   end
 
   def session_params
-    params.require(:user_session).permit(:email, :password, :remember_me)
-  rescue ActionController::ParameterMissing
-    nil
+    params[:user_session] && params.require(:user_session).permit(:email, :password, :remember_me)
   end
 end

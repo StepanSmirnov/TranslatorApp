@@ -2,13 +2,9 @@ class TranslationsController < ApplicationController
   rescue_from YandexError, with: :onerror
   helper_method :translation, :users_translations
   before_action :is_logged
-	def index
+  def index; end
 
-	end
-
-  def new
-
-  end
+  def new; end
 
   def create
     users_translations.create(translation_params)
@@ -20,10 +16,10 @@ class TranslationsController < ApplicationController
     render :new
   end
 
-private
+  private
 
   def onerror(ex)
-    render text:ex.message
+    render text: ex.message
   end
 
   def translation
@@ -34,11 +30,11 @@ private
     @translations ||= current_user.translations
   end
 
-  def is_logged   
+  def is_logged
     redirect_to sign_in_path(locale: I18n.locale) unless current_session
   end
 
   def translation_params
-    params[:translation] && params.require(:translation).permit(:source, :lang, :text, :fromlang)
+    params[:translation] && params.require(:translation).permit(:source, :lang)
   end
 end

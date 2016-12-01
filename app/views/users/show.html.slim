@@ -1,0 +1,9 @@
+ul
+  li
+    = current_user.name
+  li
+    = current_user.email
+= link_to t('nav.sign_out'), sign_out_path, method: :delete
+= link_to t('user.edit'), edit_user_path
+= link_to t('user.delete'), user_path, method: :delete
+= link_to t('nav.back'), translate_path

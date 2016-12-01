@@ -9,23 +9,19 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    
-  end
+  def new; end
 
-  def edit
-
-  end
+  def edit; end
 
   def show
-    render text: t(:err401), status: 401 if User.find(params[:id])!=current_user
+    render text: t(:err401), status: 401 if User.find(params[:id]) != current_user
   rescue ActiveRecord::RecordNotFound
-    render text: t(:err404), status: 404 
+    render text: t(:err404), status: 404
   end
 
   def update
     current_user.update(users_params)
-    redirect_to current_user  
+    redirect_to current_user
   end
 
   def destroy
@@ -33,12 +29,13 @@ class UsersController < ApplicationController
     redirect_to sign_in_path(locale: I18n.locale)
   end
 
-private
+  private
+
   def user
     @user ||= User.new(users_params)
   end
 
   def users_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :locale)
+    params[:user] && params.require(:user).permit(:name, :email, :password, :password_confirmation, :locale)
   end
 end
