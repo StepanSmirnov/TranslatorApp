@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  helper_method :get_session
+  helper_method :user_session
 
   def new
    
@@ -27,5 +27,7 @@ private
 
   def session_params
     params.require(:user_session).permit(:email, :password, :remember_me)
+  rescue ActionController::ParameterMissing
+    nil
   end
 end

@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'authlogic'
 gem 'YandexTranslator'
 gem 'russian'
+gem 'slim'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
