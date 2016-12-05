@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   def edit; end
 
   def show
-    render text: t(:err401), status: 401 if User.find(params[:id]) != current_user
+    render text: t(:error401), layout: 'error', status: 401 if User.find(params[:id]) != current_user
   rescue ActiveRecord::RecordNotFound
-    render text: t(:err404), status: 404
+    render text: t(:error404), layout: 'error', status: 404
   end
 
   def update
