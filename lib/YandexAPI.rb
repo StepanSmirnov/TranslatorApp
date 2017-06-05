@@ -2,7 +2,7 @@ class YandexAPI
   $translator = YandexTranslator::YandexTranslator.new(ENV['apikey'])
   class <<self
     def translate(source, lang)
-      translation = $translator.translate(source, lang)
+      translation = $translator.translate(source, lang, 'plain')
       { text: translation['text'][0], fromlang: translation['lang'].split('-').first }
     end
 
